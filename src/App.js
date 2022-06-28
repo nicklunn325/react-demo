@@ -3,11 +3,11 @@ import "./App.css";
 import PizzasList from "./PizzasList";
 import { useState, useEffect } from "react";
 import Counter from "./Counter";
+import PizzaForm from "./PizzaForm";
 
 function App() {
   const [pizzas, setPizzas] = useState([]);
-
-  // let pizzas = [];
+  const [getPizzas, setGetPizzas] = useState(0);
 
   function fetchPizzas() {
     fetch("http://localhost:3000/pizzas")
@@ -15,26 +15,19 @@ function App() {
       .then((pizzaData) => setPizzas(pizzaData));
   }
 
-  useEffect(fetchPizzas, []);
-
-  // let pizzasDiv = document.querySelector(".App");
-
-  // pizzas.forEach((pizza) => {
-  //   let h3 = document.createElement("h3");
-  //   h3.innerText = pizza.name;
-  //   pizzasDiv.append(h3);
-  // });
-
+  useEffect(fetchPizzas, [getPizzas]);
   return (
     <div className="App">
       <h1> PIZZA SHOP </h1>
       <Counter />
-      {/* <PizzasList pizzas={pizzas} test="Hello World" /> */}
-      {/* {PizzasList({ pizzas: pizzas, test: "hello world" })} */}
+      <PizzaForm setPizzas={setPizzas} />
+      <PizzasList
+        setGetPizzas={setGetPizzas}
+        setPizzas={setPizzas}
+        pizzas={pizzas}
+      />
     </div>
   );
 }
 
 export default App;
-
-// we want to fetch our pizzas
