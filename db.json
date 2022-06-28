@@ -6,6 +6,20 @@
       "toppings": "mozzarella, goat cheese, fig paste, thinly sliced pear, fresh arugula, truffle oil, salt + pepper",
       "image": "https://s3-media0.fl.yelpcdn.com/bphoto/DPMMrW5AV45d12Nsl0D4xg/258s.jpg",
       "likes": 419
+    },
+    {
+      "name": "Supreme",
+      "image": "https://static.onecms.io/wp-content/uploads/sites/24/2019/12/10/sl_supremepizza_00072-2000.jpg",
+      "toppings": "Mushrooms, Onions",
+      "likes": 0,
+      "id": 2
+    },
+    {
+      "name": "Pepperoni",
+      "image": "https://static.onecms.io/wp-content/uploads/sites/24/2019/12/10/sl_supremepizza_00072-2000.jpg",
+      "toppings": "Pepperoni",
+      "likes": 0,
+      "id": 3
     }
   ]
 }

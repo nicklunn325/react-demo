@@ -1,9 +1,7 @@
 import Pizza from "./Pizza";
-function PizzasList({ pizzas, setPizzas, setGetPizzas }) {
+function PizzasList({ pizzas, setPizzas }) {
   const displayPizzas = pizzas.map((pizza) => {
-    return (
-      <Pizza pizza={pizza} setGetPizzas={setGetPizzas} setPizzas={setPizzas} />
-    );
+    return <Pizza pizza={pizza} setPizzas={setPizzas} />;
   });
   return (
     <div>

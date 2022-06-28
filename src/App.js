@@ -3,11 +3,12 @@ import "./App.css";
 import PizzasList from "./PizzasList";
 import { useState, useEffect } from "react";
 import Counter from "./Counter";
+import SearchBar from "./SearchBar";
 import PizzaForm from "./PizzaForm";
 
 function App() {
   const [pizzas, setPizzas] = useState([]);
-  const [getPizzas, setGetPizzas] = useState(0);
+  const [search, setSearch] = useState("");
 
   function fetchPizzas() {
     fetch("http://localhost:3000/pizzas")
@@ -15,17 +16,22 @@ function App() {
       .then((pizzaData) => setPizzas(pizzaData));
   }
 
-  useEffect(fetchPizzas, [getPizzas]);
+  useEffect(fetchPizzas, []);
+
+  let filteredPizzas = pizzas.filter((pizza) => {
+    let query = search.toLowerCase();
+    return (
+      pizza.name.toLowerCase().includes(query) ||
+      pizza.toppings.toLowerCase().includes(query)
+    );
+  });
   return (
     <div className="App">
       <h1> PIZZA SHOP </h1>
-      <Counter />
+      {/* <Counter /> */}
       <PizzaForm setPizzas={setPizzas} />
-      <PizzasList
-        setGetPizzas={setGetPizzas}
-        setPizzas={setPizzas}
-        pizzas={pizzas}
-      />
+      <SearchBar search={search} setSearch={setSearch} />
+      <PizzasList setPizzas={setPizzas} pizzas={filteredPizzas} />
     </div>
   );
 }
